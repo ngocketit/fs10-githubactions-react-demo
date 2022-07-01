@@ -3,13 +3,16 @@ name: Demo CI/CD node
 on: [push, pull_request]
 
 jobs:
-  node16-demo:
+  build:
     runs-on: ubuntu-20.04
     steps:
       - name: Install node
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+
+      - name: Checkout the source code
+        uses: actions/checkout@v3
 
       - name: Install packages
         run: npm install
