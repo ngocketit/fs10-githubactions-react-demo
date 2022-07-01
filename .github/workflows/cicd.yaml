@@ -14,6 +14,15 @@ jobs:
       - name: Checkout the source code
         uses: actions/checkout@v3
 
+      - name: Setup cache
+        uses: actions/cache@v3
+        with:
+          key: ${{ runner.os }}-whatever-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          restore-keys: |
+            ${{ runner.os }}-whatever-
+            ${{ runner.os }}-
+
       - name: Install packages
         run: npm install
 
