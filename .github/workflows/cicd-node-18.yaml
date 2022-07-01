@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   node16-demo:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         node: [16, 18]
