@@ -1,15 +1,24 @@
-name: Demo CI/CD node 16
+name: Demo CI/CD node
 
 on: [push, pull_request]
 
 jobs:
-  node-demo:
-    runs-on: ubuntu-18.04
+  node16-demo:
+    runs-on: ubuntu-20.04
     steps:
       - name: Install node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 16.x
 
-      - name: Echo something
-        run: node --version
+      - name: Install packages
+        run: npm install
+
+      - name: Running test
+        run: npm test
+
+      - name: Running linting
+        run: npm run lint
+
+      - name: Building
+        run: npm run build
